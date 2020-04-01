@@ -4,9 +4,6 @@ github.com/davecgh/go-spew/spew
 # github.com/fatih/color v1.6.0
 ## explicit
 github.com/fatih/color
-# github.com/git-chglog/git-chglog v0.0.0-20190923122001-6050f20bcdb0
-## explicit
-github.com/git-chglog/git-chglog
 # github.com/imdario/mergo v0.0.0-20180119215619-163f41321a19
 ## explicit
 github.com/imdario/mergo

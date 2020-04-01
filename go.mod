@@ -5,7 +5,6 @@ go 1.14
 require (
 	github.com/davecgh/go-spew v1.1.0 // indirect
 	github.com/fatih/color v1.6.0
-	github.com/macroprog/git-chglog v0.0.0-20190923122001-6050f20bcdb0
 	github.com/imdario/mergo v0.0.0-20180119215619-163f41321a19
 	github.com/mattn/go-colorable v0.0.9
 	github.com/mattn/go-isatty v0.0.3 // indirect
