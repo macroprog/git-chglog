@@ -339,6 +339,77 @@ func (gen *Generator) render(w io.Writer, unreleased *Unreleased, versions []*Ve
 			}
 			return ""
 		},
+		// upper case the first character of a string
+		"userUpdates": func(s string, lang string) string {
+			result := ""
+			userUpdate := false
+
+			if len(s) > 0 {
+				lines := strings.Split(s, "\n")
+
+				for _, line := range lines {
+					stringToAdd := line
+					if userUpdate {
+						add := true
+						if strings.Trim(lang, " ") != "" {
+							langFinded := strings.Index(strings.ToLower(line), strings.ToLower("[" + lang + "]"))
+							if langFinded == -1 {
+								add = false
+							} else {
+								stringToAdd = strings.Replace(stringToAdd, "[" + lang + "]", "", 9999)
+								stringToAdd = strings.Trim(stringToAdd, " ")
+							}
+						}
+
+						if add {
+							result = result + "- " + stringToAdd + "\n"
+						}
+					}
+
+					firstSep := strings.Index(strings.ToLower(line), "usernote")
+					if firstSep >= 0 {
+						userUpdate = true
+					}
+				}
+			}
+
+			if userUpdate {
+				return result
+			} else {
+				return ""
+			}
+		},
+		// upper case the first character of a string
+		"isUserUpdates": func(s string, lang string) bool {
+			userUpdate := false
+
+			if len(s) > 0 {
+				lines := strings.Split(s, "\n")
+
+				for _, line := range lines {
+					if userUpdate {
+						add := true
+						if strings.Trim(lang, " ") != "" {
+							langFinded := strings.Index(strings.ToLower(line), strings.ToLower("[" + lang + "]"))
+							if langFinded == -1 {
+								add = false
+							}
+						}
+
+						if add {
+							return true
+						}
+					}
+
+					firstSep := strings.Index(strings.ToLower(line), "usernote")
+					if firstSep >= 0 {
+						userUpdate = true
+					}
+				}
+			}
+
+			return false
+		},
 	}
 
 	fname := filepath.Base(gen.config.Template)
