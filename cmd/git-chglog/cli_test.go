@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"testing"
 
-	chglog "github.com/git-chglog/git-chglog"
+	chglog "github.com/macroprog/git-chglog"
 	"github.com/stretchr/testify/assert"
 )
 
